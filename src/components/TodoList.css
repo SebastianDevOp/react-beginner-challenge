@@ -1,0 +1,39 @@
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 12px 6px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.list-item button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.list-item button:hover {
+  background-color: rgb(196, 4, 4);
+}

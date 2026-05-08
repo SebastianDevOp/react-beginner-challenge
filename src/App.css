@@ -1,0 +1,44 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: aliceblue;
+  font-family: "Courier New", Courier, monospace;
+  gap: 1rem;
+}
+
+.challenge-container {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  gap: 2px;
+  align-items: center;
+}
+
+.card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.challenge-header {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,13 @@
+/*  Have a CSS file `Button.css` with: padding, rounded corners,
+ a background color, a hover color, and a pointer cursor. */
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: grey;
+}

@@ -1,0 +1,13 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.error-text {
+  color: red;
+  font-size: small;
+  font-weight: bold;
+  display: block;
+}
