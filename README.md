@@ -5,7 +5,7 @@ Hier ist die React-Beginner-Challenge, die mein Wissen vertiefen soll. Die Chall
 ### <u>📜 Die Regeln:</u>
 
 - **TypeScript überall:** Konsequente Nutzung von TypeScript. Komponentendateien nutzen `.tsx`, reine Logik- und Hilfsdateien `.ts`.
-- **Eine Komponente pro Datei:** Der Dateiname muss exakt dem Komponentennamen entsprechen (z. B. `Button.tsx`).
+- **Eine Komponente pro Datei:** Der Dateiname muss exakt dem Komponentennamen entsprechen.
 - **CSS-Organisation:** Die `.css`-Datei wird direkt oben in der jeweiligen Komponente importiert.
 - **Typisierung der Props:** Props werden immer explizit mit einem `type` definiert.
 - **Explizite Importe:** Beim Importieren werden vollständige Pfade genutzt.
@@ -63,7 +63,7 @@ type CardProps = {
 Der Styling war hier im Fokus: Die Karte hat eine feste maximale Breite, einem Schatten und abgerundete Ecken.
 
 ```css
-card {
+.card {
   display: flex;
   border: 1px solid #ddd;
   border-radius: 0;
@@ -78,3 +78,23 @@ card {
   border-radius: 8px 8px 0 0;
 }
 ```
+
+In der `App.tsx` habe ich dann drei Karten nebeneinander gerendert. Damit die Karten passen habe ich Flexbox genutzt, um die Karten ordentlich anzuordnen.
+
+```tsx
+export const Card = ({ title, description, imageUrl }: CardProps) => {
+  return (
+    <>
+      <div className="card">
+        <img className="card-image" src={imageUrl} alt={description} />
+        {title}
+        <img />
+      </div>
+    </>
+  );
+};
+```
+
+💡 **Gelernt:**
+
+- **CSS-Layouting:**
