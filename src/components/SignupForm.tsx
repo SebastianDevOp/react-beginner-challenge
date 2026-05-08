@@ -1,7 +1,6 @@
 import useForm from "../hooks/useForm";
 import "./SignupForm.css";
 import { useState } from "react";
-import type Errors from "../hooks/useForm";
 
 // ### Part B — the form component
 

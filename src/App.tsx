@@ -130,7 +130,7 @@ function App() {
           <strong>Ziel:</strong> Nebeneffekte und asynchrone Daten. Lade Daten
           von einer externen API und verwalte Lade- sowie Fehlerzustände. Sowie
           eine HOC-Funktion erstellen die eine Komponenten aufnimmt und eine
-          Neuen Komponenten ausgibt mit zusätzlichen Verhalten.
+          neue Komponenten ausgibt mit zusätzlichen Verhalten.
         </p>
         <UserListWithErrorAndLoading
           error={error}
