@@ -102,7 +102,7 @@ export const Card = ({ title, description, imageUrl }: CardProps) => {
 
 ---
 
-# Challange 3 - Counter with useState()
+# Challange 3 - Counter with `useState()`
 
 Hier habe ich mit mit `useState()`gearbeitet um den State innerhalb der Komponenten zu managen. Dabei wurde ein Counter erstellt, welcher mit 2 Buttons, erhöht oder reduziert wurde. Dabei durfte der Counter nicht unter 0 gehen.
 
@@ -122,7 +122,7 @@ export const Counter = () => {
 💡 **Gelernt:**
 
 - **useState():** Wie man State innerhalb der Komponenten verwalten kann.
-- ***
+- \*\*
 
 # Challenge 4 - Toggle Theme
 
@@ -200,5 +200,103 @@ export const TodoList = () => {
 
 ```
 
-Bei `addtoList` wird zuerst die Eingabe überrpüft, sollte dieser leer sein. Wird eine Fehlermeldung ausgegeben. Anschließend wird ein Todo-Objekt erstellt, die `id` mithilfe von `self.crypto.randomUUID().toString()`bestimmt.
-Bei den Setzen von State ist es üblich ein Kopie des Arrays zu erstellen.
+Bei `addtoList` wird zuerst die Eingabe überrpüft, sollte diese leer sein wird eine Fehlermeldung ausgegeben. Anschließend wird ein Todo-Objekt erstellt, die `id` wird mithilfe von `self.crypto.randomUUID().toString()`bestimmt.
+Bei der Zustandsaktualiersung übergeben wir dem Setter vom `list` eine Funktion `(prev) => [...prev, newTodo]`. Dabei ersellen wir eine Kopie des Array und fügen ein neues Element hinzu. Anschließend leeren wir die Eingabe wieder mit `setInput("");`.
+
+```tsx
+const removeFromList = (removedTodo: Todo) => {
+  setList((prev) => prev.filter((item) => item.id !== removedTodo.id));
+  console.log("removed");
+};
+```
+
+Bei `removeFromList` benutze ich ebenfalls die funktionale Herangehensweise und übergebe eine Funktion zum entfernen eines Elementes. Dabei erstelle ich eine neue Liste welche die Ids miteinaderer vergleicht und das zu entfernende Elemente "herausfiltert".
+
+```tsx
+return (
+  <>
+    <div className="input-container">
+      <input
+        type="text"
+        value={input}
+        placeholder="Aufgaben eingeben"
+        onChange={handleChange}
+      />
+      <button onClick={addToList}>Aufgabe hinzufügen</button>
+    </div>
+    <div>
+      <ul className="list">
+        {list.map((todo) => (
+          <li className="list-item" key={todo.id}>
+            {todo.text}
+            <button onClick={() => re moveFromList(todo)}>Löschen</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </>
+);
+```
+
+Der Ablauf ist folgender:
+
+- Über das Eingabefeld werden die Aufgaben eingegeben.
+- Per Klick auf **"Aufgaben hinzufügen"** wird `addToList()` gestartet.
+- Nach erfolgreichen hinzufügen, wird die Liste per` list.map()` gerendert, wichtig ist hier das man einen `key`angibt und dieser atomar ist.
+- Per Klick auf **"Löschen"** wird die Aufgabe gelöscht
+
+💡 **Gelernt:**
+
+- **Arrays per State verwalten:** Das Verwalten von Arrays mithilfe von `useState()` und die funktionale Zustandsaktualiserung.
+- **Listen in JSX:** Listen mithilfe von `.map()` zu rendern.
+
+---
+
+# Challenge 6 - Fetch mithilfe von `useState()`
+
+Die Aufgabe bestand zum größten Teil daraus `useEffect()` richtig zu verwenden um Daten aus einer API zu holen. Dabei wird `useEffect()`genutzt um `Nebeneffekte` zu verwalten, also Aktionen welcher nach dem Redern der Komponenten erfolgen.
+
+```tsx
+useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
+
+      if (!res.ok) {
+        throw new Error("Error Status: " + res.status);
+      }
+
+      const result: User[] = await res.json();
+
+      setUsers(result);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchUser();
+}, []);
+```
+
+Ich nutzt `useEffect()` hier folgendermaßen:
+
+- Ich nutze `async()` um die Funktion als asynchron zu markieren, hier wird ein `Promise` ausgegeben.
+- `await` pausiert das `Promise` bis es erfüllt worden ist, ohne den Hauptthread zu stoppen
+- Das Resultat kommt in ein `User`-Array zudem fangen wir mögliche Fehler mit `try {...} catch(e){...}`ab
+- Zum Schlusse setzen wir den const
+
+---
+
+# Challenge 7 - Custom Hook `useLocalStorage()`
+
+// TODO
+
+# Challenge 8 - Higher-Order Component `withLoading`
+
+// TODO
+
+# Challenge 9 - Form mithilfe vom `useForm` Custom Hook
+
+// TODO
