@@ -122,12 +122,11 @@ export const Counter = () => {
 💡 **Gelernt:**
 
 - **useState():** Wie man State innerhalb der Komponenten verwalten kann.
-
----
+- ***
 
 # Challenge 4 - Toggle Theme
 
-Das Prinzip war das, man den Klassennamen des Button mithilfe eines `useState()` ableitete, indem man diesen bei jeden Klick auf den Button änderte. Dazu nutze ich den _Ternären Operator_, um zwischen den jeweiligen Fällen zu unterscheiden.
+Das Prinzip war, das man den Klassennamen des Button mithilfe eines `useState()` ableitete, indem man diesen bei jeden Klick auf den Button änderte. Dazu nutze ich den _Ternären Operator_, um zwischen den jeweiligen Fällen zu unterscheiden.
 
 ```tsx
 export const ToggleTheme = () => {
@@ -137,7 +136,7 @@ export const ToggleTheme = () => {
     <>
       <div>
         <button
-          className={theme ? "dark" : "light"}
+          className={theme ? "dark" : "light"} // Ternärer Operator
           onClick={() => setTheme(!theme)}
         >
           {theme ? "Switch to Light" : "Switch to Dark"}
@@ -147,3 +146,59 @@ export const ToggleTheme = () => {
   );
 };
 ```
+
+💡 **Gelernt:**
+
+- **Abgeleitete Klassennamen:** Styling kann agil mithilfe von Komponentenlogik geändert werden.
+- **Boolesche Zustände:** `useState()`wird `boolean` als Typenparameter übergeben und somit wird die Logik gesteuert.
+
+---
+
+# Challenge 5 - Todo List
+
+Die Aufgabe bestand darin ein "Todo-Liste" zu erstellen, die über ein `<input>` ein Aufgabe erhält und diesen in eine Liste hinzugefügt. Dabei sollten die Aufgaben diese Form haben:
+
+```ts
+type Todo = {
+  id: string;
+  text: string;
+};
+```
+
+<u>Zu beachten waren folgende Punkte:</u>
+
+- Ein Aufgabe wird über das Inputfeld eingegeben und anschließlich über den "Add"-Button hinzugefügt.
+- Jede Aufgabe hat einen eigenen "Delete"-Button um die Aufgabe zu entfernen.
+- Leere Felder sind nicht erlaubt.
+- Nach jeder erfolgreichen Eingabe, soll das Eingabefeld wieder leer sein.
+- die `id : string `soll mithilfe von `self.crypto.randomUUID().toString();` bestimmt werden.
+
+`useState()` dient hier diesmal zum managen des Input und zudem zum verwalten der Liste. Dabei übergibt man den Typenparameter `Todo<[]>` ,also eine Array der Aufgaben.
+
+```tsx
+export const TodoList = () => {
+  const [input, setInput] = useState("");
+  const [list, setList] = useState<Todo[]>([]);
+
+  const addToList = () => {
+    if (input.trim() === "") {
+      alert("Eingabe darf nicht leer sein!");
+      return;
+    }
+    const newTodo: Todo = {
+      text: input,
+      id: self.crypto.randomUUID().toString(),
+    };
+
+    console.log(newTodo);
+    setList((prev) => [...prev, newTodo]);
+    setInput("");
+  };
+.
+.
+.
+
+```
+
+Bei `addtoList` wird zuerst die Eingabe überrpüft, sollte dieser leer sein. Wird eine Fehlermeldung ausgegeben. Anschließend wird ein Todo-Objekt erstellt, die `id` mithilfe von `self.crypto.randomUUID().toString()`bestimmt.
+Bei den Setzen von State ist es üblich ein Kopie des Arrays zu erstellen.

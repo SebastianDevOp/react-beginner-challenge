@@ -5,7 +5,8 @@ import { useState } from "react";
 
 // **Goal:** derived class names and boolean state.
 
-// Create a `ThemeToggle` component with a button that switches between "light" and "dark". When dark, the component's root `<div>` should have class `dark`. When light, class `light`.
+// Create a `ThemeToggle` component with a button that switches between "light" and "dark".
+// When dark, the component's root `<div>` should have class `dark`. When light, class `light`.
 
 // Add `ThemeToggle.css` with:
 
