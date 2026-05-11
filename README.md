@@ -97,4 +97,53 @@ export const Card = ({ title, description, imageUrl }: CardProps) => {
 
 💡 **Gelernt:**
 
-- **CSS-Layouting:**
+- **CSS-Layouting:** Wie man gezielt CSS-Styling benutzt, um ein modernes Design zu erstellen.
+- **Flexbox-Grundlagen:** Das Anordnen von mehreren Komponenten in einem Container mithilfe von `display: flex`.
+
+---
+
+# Challange 3 - Counter with useState()
+
+Hier habe ich mit mit `useState()`gearbeitet um den State innerhalb der Komponenten zu managen. Dabei wurde ein Counter erstellt, welcher mit 2 Buttons, erhöht oder reduziert wurde. Dabei durfte der Counter nicht unter 0 gehen.
+
+```tsx
+export const Counter = () => {
+  const [counter, setCounter] = useState<number>(0);
+
+  const reduceCounter = () => {
+    if (counter == 0) {
+      alert("Zähler darf nicht negativ sein!");
+      return;
+    }
+    setCounter(counter - 1);
+  };
+```
+
+💡 **Gelernt:**
+
+- **useState():** Wie man State innerhalb der Komponenten verwalten kann.
+
+---
+
+# Challenge 4 - Toggle Theme
+
+Das Prinzip war das, man den Klassennamen des Button mithilfe eines `useState()` ableitete, indem man diesen bei jeden Klick auf den Button änderte. Dazu nutze ich den _Ternären Operator_, um zwischen den jeweiligen Fällen zu unterscheiden.
+
+```tsx
+export const ToggleTheme = () => {
+  const [theme, setTheme] = useState<boolean>(false);
+
+  return (
+    <>
+      <div>
+        <button
+          className={theme ? "dark" : "light"}
+          onClick={() => setTheme(!theme)}
+        >
+          {theme ? "Switch to Light" : "Switch to Dark"}
+        </button>
+      </div>
+    </>
+  );
+};
+```
